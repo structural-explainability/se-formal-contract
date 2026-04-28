@@ -1,0 +1,16 @@
+# Single source of truth and both Python and Lean align to this.
+# TODO: Later, Lean will emit data and Python will read it.
+
+[invariants]
+values = [
+  "formal_contract_is_root",
+  "no_cycles",
+  "no_reverse_foundation_dependencies",
+  "constitution_is_foundational"
+]
+
+[regimes]
+values = ["OBL", "NOR", "OCC", "CTX", "REC", "ENR"]
+
+[relations]
+values = ["equivalent", "narrower", "broader", "overlaps", "none"]

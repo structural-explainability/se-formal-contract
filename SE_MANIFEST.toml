@@ -1,0 +1,74 @@
+# ============================================================
+# SE_MANIFEST.toml (Repository Declaration)
+# se-formal-contract
+# ============================================================
+
+schema = "se-manifest-2"
+
+# === Identity ===
+
+[meta]
+name = "se-formal-contract"
+org = "structural-explainability"
+status = "active"
+version = "0.1.0"
+
+[repo]
+class = "formal_contract"
+summary = "Lean 4–verified formal contract exporting invariants, regimes, relations, and proof status to operational SE repositories."
+
+# === Structural contract ===
+
+[depends]
+# formal contract is the root
+optional = []
+required = []
+
+[provides]
+# explicit contract artifacts exported to operational layer
+artifacts = [
+  "contract-manifest",
+  "invariant-registry",
+  "regime-registry",
+  "relation-registry",
+  "proof-registry",
+]
+
+[scope]
+includes = [
+  "formal definitions of structural constraints",
+  "formal definitions of identity regimes",
+  "formal neutrality constraints",
+  "allowed structural relation primitives",
+  "machine-checked theorem status",
+  "exported contract artifacts for operational validation",
+]
+
+excludes = [
+  "operational validation logic",
+  "repository governance rules",
+  "schema definitions for other repositories",
+  "domain-specific mappings or data",
+  "interpretation semantics",
+  "runtime systems",
+]
+
+[validation]
+# this repo validates proofs and export integrity, not operational data
+entrypoint = "se_formal_contract.app:run_validate"
+
+# === Behavior / governance ===
+
+[naming]
+pattern = "se-*"
+
+[governance]
+authority = "structural-explainability"
+
+# === External references ===
+
+[citation]
+cff = "CITATION.cff"
+
+[traceability]
+identifier_map = "none"

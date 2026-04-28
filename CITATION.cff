@@ -1,0 +1,56 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include this file.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
+type: software
+
+title: "Structural Explainability Formal Contract"
+version: "0.1.0"
+date-released: "2026-04-27"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+
+year: 2026
+repository-code: "https://github.com/structural-explainability/se-formal-contract"
+url: "https://github.com/structural-explainability/se-formal-contract"
+
+license: MIT
+
+abstract: >
+  Lean 4-verified formal contract for Structural Explainability (SE).
+  This repository defines the machine-checked structural constraints,
+  identity regimes, neutrality conditions, and allowed relation primitives
+  that authorize operational validation across the SE ecosystem.
+  It exports invariant, regime, relation, and proof registries
+  for consumption by downstream repositories.
+
+keywords:
+  # identity
+  - structural-explainability
+  - formal-contract
+  - lean4
+  - theorem-proving
+  - formal-verification
+
+  # concepts
+  - invariants
+  - identity-regimes
+  - neutrality
+  - structural-constraints
+  - relation-primitives
+
+  # ecosystem
+  - proof-carrying
+  - contract-layer
+  - interoperability
+  - reproducible-systems
+
+message: "If you use this work, please cite it using the metadata in this file."
