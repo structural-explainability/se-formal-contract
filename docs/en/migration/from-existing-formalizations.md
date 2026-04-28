@@ -123,7 +123,7 @@ Exported artifact affected:
 
 Additional comments.
 
-```
+```markdown
 
 ## Initial migration order
 

@@ -5,8 +5,6 @@ reference to implementation or theorem-proving details.
 
 It explains what the contract requires, why it exists, and what it constrains.
 
-
-
 ## Purpose
 
 The formal contract defines the minimal structural conditions under which:
@@ -18,8 +16,6 @@ The formal contract defines the minimal structural conditions under which:
 
 These conditions are independent of interpretation.
 
-
-
 ## Core idea
 
 A system is admissible if identity and persistence can be evaluated without
@@ -30,8 +26,6 @@ This requires:
 - fixed identity conditions
 - explicit structural relationships
 - separation between structure and interpretation
-
-
 
 ## Identity and persistence
 
@@ -45,8 +39,6 @@ Each profile defines:
 - what counts as “different”
 - how transformations affect identity
 
-
-
 ## Regime profiles
 
 The contract requires nine identity-and-persistence regime profiles:
@@ -59,8 +51,6 @@ The contract requires nine identity-and-persistence regime profiles:
 
 These do not require refinement under admissible transformations.
 
-
-
 ### ENR refinement (branching)
 
 - **ENR-L** — locus-bound referent
@@ -68,8 +58,6 @@ These do not require refinement under admissible transformations.
 
 Two representations can refer to the same locus even when artifacts differ,
 but cannot remain the same artifact once branching produces distinct objects.
-
-
 
 ### CTX refinement (decomposition)
 
@@ -79,8 +67,6 @@ but cannot remain the same artifact once branching produces distinct objects.
 Two representations can apply to the same cases even when internally structured
 differently, but cannot be the same structure once decomposition changes that organization.
 
-
-
 ### NOR refinement (structural vs content)
 
 - **NOR-C** — content-sensitive normative structure
@@ -88,8 +74,6 @@ differently, but cannot be the same structure once decomposition changes that or
 
 Two representations can encode the same normative content while differing in structure,
 but cannot remain the same structure once that organization changes.
-
-
 
 ## Why refinement is required
 
@@ -103,8 +87,6 @@ This creates **split pressure**.
 The ENR, CTX, and NOR refinements are forced by this condition.
 
 The result is a lower bound of nine regime profiles.
-
-
 
 ## Relations
 
@@ -122,8 +104,6 @@ Allowed relation primitives include:
 
 These relations do not alter identity conditions.
 
-
-
 ## Neutrality
 
 The contract requires structural neutrality.
@@ -136,8 +116,6 @@ This means:
 
 Interpretation is external to the substrate.
 
-
-
 ## Consequences
 
 ### Comparison
@@ -147,15 +125,11 @@ regime profiles and relations.
 
 Interpretation differences do not affect comparability.
 
-
-
 ### Persistence of disagreement
 
 Disagreement does not break structure.
 
 Different interpretations can coexist over the same structural representation.
-
-
 
 ### Transformation
 
@@ -164,8 +138,6 @@ Changes to a system are evaluated structurally:
 - whether identity is preserved
 - whether admissibility is maintained
 - how regime classifications are affected
-
-
 
 ## Boundary
 

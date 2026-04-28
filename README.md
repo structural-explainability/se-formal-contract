@@ -107,10 +107,6 @@ git push -u origin main
 
 </details>
 
-## Annotations
-
-[ANNOTATIONS.md](./ANNOTATIONS.md)
-
 ## Citation
 
 [CITATION.cff](./CITATION.cff)
@@ -118,3 +114,7 @@ git push -u origin main
 ## License
 
 [MIT](./LICENSE)
+
+## Manifest
+
+[SE_MANIFEST.toml](./SE_MANIFEST.toml)
