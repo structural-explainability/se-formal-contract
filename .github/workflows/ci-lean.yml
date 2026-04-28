@@ -1,53 +1,53 @@
 # ============================================================
 # .github/workflows/ci-lean.yml (Continuous Integration)
-# ============================================================#
+# ============================================================
 # WHY-FILE: Lean deliverables are proofs; broken proofs must not merge.
 # REQ: Any check that can be run locally MUST be available locally via pre-commit.
 # REQ: CI MUST NOT introduce arbitrary rules that are not reproducible locally.
 
 name: CI Lean
 
-# WHY: Validate repo contents on pushes to main branch and pull requests.
-
 on:
   push:
-    branches: [main] # WHY: Run when pushing to main branch.
+    branches: [main]
   pull_request:
-    branches: [main] # WHY: Run on pull requests targeting main branch.
-  workflow_dispatch: # WHY: Allow manual triggering from Actions tab.
+    branches: [main]
+  workflow_dispatch:
 
-permissions: # WHY: Use least privileges required.
+permissions:
   contents: read
 
-env:
-  PYTHONUNBUFFERED: "1" # WHY: Real-time logging.
-  PYTHONIOENCODING: "utf-8" # WHY: Ensure UTF-8 encoding for international characters.
-
 jobs:
-  ci:
-    name: Repository checks
-    runs-on: ubuntu-latest # WHY: Linux environment matches most production deployments
-    timeout-minutes: 10 # WHY: Prevent hanging jobs. If over time, likely stuck.
+  lean:
+    name: Build Lean and export contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       # ============================================================
-      # ASSEMBLE: Get code and set up environment
+      # A) ASSEMBLE: Get code and set up Lean
       # ============================================================
 
       - name: A1) Checkout repository code
         uses: actions/checkout@v6
-        # WHY: Required so all subsequent steps can access repo files.
 
-  build:
-    name: Build Lean (compile)
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    needs: ci # WHY: Build only if ci job succeeds.
+      - name: A2) Set up Lean toolchain
+        uses: leanprover/lean-action@v1
 
-    steps:
       # ============================================================
-      # BUILD: Get code and build Lean project
+      # B) BUILD: Compile Lean project
       # ============================================================
 
-      - uses: actions/checkout@v6
-      - uses: leanprover/lean-action@v1
+      - name: B1) Build Lean project
+        run: lake build
+        # WHY: Compiles the Lean formal contract surface.
+        # OBS: Uses the Lean version declared in lean-toolchain.
+
+      # ============================================================
+      # C) EXPORT: Generate contract artifacts
+      # ============================================================
+
+      - name: C1) Export formal contract artifacts
+        run: lake exe export_contract
+        # WHY: Generates data/contract/*.json from the Lean surface.
+        # OBS: This command writes generated artifacts for downstream consumption.
