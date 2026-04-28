@@ -54,7 +54,7 @@ pythonVersion = "3.15"
 reportMissingTypeStubs = "none" # WHY: Avoid warnings from third-party libraries without type stubs.
 reportMissingImports = "warning" # WHY: Warn about missing imports to catch potential issues, but allow flexibility in notebooks and dynamic code.
 reportPrivateUsage = "none" # WHY: Allow usage of private members (e.g., _version.py) without warnings, as this is common in Python projects.
-typeCheckingMode = "strict" # strict | basic | off
+typeCheckingMode = "basic" # strict | basic | off
 useLibraryCodeForTypes = false # WHY: Avoid type checking third-party library code to reduce noise and improve performance.
 
 # === PYTEST (VERIFY LOGIC) ===

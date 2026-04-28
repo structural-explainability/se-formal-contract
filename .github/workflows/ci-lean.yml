@@ -51,3 +51,8 @@ jobs:
         run: lake exe export_contract
         # WHY: Generates data/contract/*.json from the Lean surface.
         # OBS: This command writes generated artifacts for downstream consumption.
+
+      - name: C2) Check exported contract artifacts are committed
+        run: git diff --exit-code data/contract
+        # WHY: Ensures committed contract artifacts match the Lean-generated output.
+        # OBS: If this fails, run `lake exe export_contract`, commit the changed files, and rerun CI.
