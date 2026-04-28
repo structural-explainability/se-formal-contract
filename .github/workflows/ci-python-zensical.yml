@@ -127,12 +127,7 @@ jobs:
       # E) EXECUTION: Module entrypoints and validation
       # ============================================================
 
-      - name: E1) Export SE Formal Contract
-        run: uv run python -m se_formal_contract export
-        # WHY: Generates canonical contract registries (invariants, regimes, relations, proofs) for downstream use.
-        # OBS: Output is treated as generated artifacts and should not be manually edited.
-
-      - name: E2) Validate Exported SE Formal Contract
+      - name: E1) Validate Exported SE Formal Contract
         run: uv run python -m se_formal_contract validate
         # WHY: Verifies that exported contract artifacts are structurally valid and internally consistent.
         # OBS: This is the authoritative integrity check before downstream repositories consume the contract.
