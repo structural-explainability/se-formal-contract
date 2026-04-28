@@ -1,44 +1,19 @@
-import SEFormalContract.Basic
+import SEFormalContract.Relation.Core
+import SEFormalContract.Relation.Spec
+import SEFormalContract.Relation.Conformance
 
 namespace SEFormalContract
 
 /-!
 File: SEFormalContract.Relation
 
-Owns:
+REQ.PUBLIC.SURFACE:
+  Public import surface.
 
-- allowed structural relation primitives
-- relation admissibility predicates
-- relation compatibility and closure constraints
+WHY:
+  Downstream users have one stable import path.
 
-Does not own:
-
-- meanings of mapped entities
-- domain-specific equivalence claims
-- mapping data or files
-- interpretation semantics
-
-Notes:
-
-- Relations define structure only, not meaning.
-- Keep the set minimal and stable.
-- All operational mappings must reduce to these primitives.
+OBS:
+  - This module re-exports modules by importing them.
+  - No declarations belong here.
 -/
-
-
-
-inductive Relation where
-  | equivalent
-  | narrower
-  | broader
-  | overlaps
-  | none
-deriving Repr, DecidableEq
-
-def Relation.isAdmissible (_r : Relation) : Prop :=
-  True
-
-theorem allRelationsAdmissible (r : Relation) : r.isAdmissible := by
-  trivial
-
-end SEFormalContract

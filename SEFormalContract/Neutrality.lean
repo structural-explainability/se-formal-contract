@@ -1,57 +1,14 @@
-import SEFormalContract.Basic
-
-namespace SEFormalContract
-
+import SEFormalContract.Neutrality.Core
+import SEFormalContract.Neutrality.Spec
+import SEFormalContract.Neutrality.Conformance
 /-!
-File: SEFormalContract.Neutrality
+REQ.PUBLIC.SURFACE:
+  Public import surface.
 
-Owns:
+WHY:
+  Downstream users should have one stable import path.
 
-- neutrality predicate
-- pre-causal and pre-normative constraints
-- theorem statements and results related to neutrality
-- explicit assumptions required for neutrality claims
-
-Does not own:
-
-- governance semantics
-- explanation semantics
-- mapping vocabulary
-- operational validation logic
-
-Notes:
-
-- This file encodes the formal basis for neutrality claims.
-- All assumptions must be explicit.
-- Avoid embedding interpretation or domain-specific meaning.
+OBS:
+  - This module re-exports modules by importing them.
+  - No declarations belong here.
 -/
-
-
-
-
-structure Substrate where
-  name : String
-deriving Repr, DecidableEq
-
-def PreCausal (_s : Substrate) : Prop :=
-  True
-
-def PreNormative (_s : Substrate) : Prop :=
-  True
-
-def OntologicallyNeutral (s : Substrate) : Prop :=
-  PreCausal s /\ PreNormative s
-
-theorem neutralityRequiresPreCausal
-    {s : Substrate}
-    (h : OntologicallyNeutral s) :
-    PreCausal s :=
-  h.left
-
-theorem neutralityRequiresPreNormative
-    {s : Substrate}
-    (h : OntologicallyNeutral s) :
-    PreNormative s :=
-  h.right
-
-end SEFormalContract

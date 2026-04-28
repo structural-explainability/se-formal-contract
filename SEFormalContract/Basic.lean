@@ -3,6 +3,7 @@ File: SEFormalContract.Basic
 
 Owns:
 
+- shared primitives
 - core names/types
 - contract version type/value
 - invariant identifiers

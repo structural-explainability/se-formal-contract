@@ -11,7 +11,7 @@ File: SEFormalContract
 Owns:
 
 - public library root
-- re-export of all formal contract modules
+- re-export of all modules
 
 Does not own:
 

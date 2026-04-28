@@ -14,15 +14,9 @@ Existing formalization repositories are treated as prior formal sources.
 They do not define the current architecture by default. Material is migrated only
 when it supports the formal contract exported to operational SE repositories.
 
-## Target repository
+## This repository
 
-Current target:
-
-```text
-se-formal-contract
-```
-
-The target repository owns:
+This repository owns:
 
 - Lean 4 definitions for formal SE constraints
 - machine-checked theorem status
