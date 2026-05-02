@@ -1,8 +1,8 @@
-import SEFormalContract.Regime.Core
-import SEFormalContract.Regime.Spec
+import SEFormalContract.RegimeProfile.Core
+import SEFormalContract.RegimeProfile.Spec
 
 /-!
-File: SEFormalContract.Regime.Conformance
+File: SEFormalContract.RegimeProfile.Conformance
 
 Owns:
 
@@ -16,9 +16,9 @@ Does not own:
 - domain-specific examples
 -/
 
-namespace SEFormalContract.Regime.Conformance
+namespace SEFormalContract.RegimeProfile.Conformance
 
-open SEFormalContract.Regime.Spec
+open SEFormalContract.RegimeProfile.Spec
 
 structure ConformanceEvidence where
   regimes_nine_profiles :
@@ -27,6 +27,6 @@ structure ConformanceEvidence where
 
   regimes_all_admissible :
     Req_FC_REGIMES_ALL_ADMISSIBLE ↔
-      (∀ r : SEFormalContract.Regime, r.isAdmissible)
+      (∀ r : SEFormalContract.RegimeProfile, r.isAdmissible)
 
-end SEFormalContract.Regime.Conformance
+end SEFormalContract.RegimeProfile.Conformance

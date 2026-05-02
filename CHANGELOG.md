@@ -1,11 +1,45 @@
 # Changelog
 
+<!-- markdownlint-disable MD024 -->
+
 All notable changes to this project will be documented in this file.
 
 The format is based on **[Keep a Changelog](https://keepachangelog.com/en/1.1.0/)**
 and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0.0.html)**.
 
 ## [Unreleased]
+
+---
+
+## [0.2.0] - 2026-04-30
+
+### Added
+
+Formal contract manifest and export alignment:
+
+- Added `[contract]` section to declare contract version and authority
+- Added `[exports]` section with canonical machine-readable artifact paths
+- Established explicit contract production role (`exports_verified_contract = true`)
+- Defined contract as the root of the formal dependency chain
+
+Contract-consumption readiness:
+
+- Enables `se-constitution` to consume contract via `consumes_contract_from`
+- Enables downstream validation against exported contract artifacts
+
+### Changed
+
+- Clarified separation between logical artifacts (`[provides]`) and physical artifact paths (`[exports]`)
+- Strengthened contract authority model for downstream repositories
+
+### Removed
+
+- app.py
+
+### Notes
+
+- This release establishes the contract-consumption boundary between `se-formal-contract` and `se-constitution`
+- No breaking changes to existing contract artifacts
 
 ---
 
@@ -55,10 +89,13 @@ Repository governance and tooling:
 
 ### Notes
 
-- Establishes formal contract as the root dependency for the SE ecosystem.
+- Establishes `se-formal-contract` as the authoritative root of the formal contract chain.
+- Downstream repositories must consume this contract via `se-constitution`.
 - Lean definitions are the authoritative source of contract structure.
 - Exported artifacts are generated and must not be manually edited.
-- Proof surface is partial; theorem statuses are initially marked as pending.
+- Proof surface is partial; theorem status is explicitly recorded in `data/contract/proof-registry.json`.
+- Entries may be marked as pending, and downstream consumers must treat proof status
+  as authoritative from the registry.
 
 ---
 
@@ -70,17 +107,78 @@ Repository governance and tooling:
   - **PATCH** – fixes, documentation, tooling
 - Versions are driven by git tags. Tag `vX.Y.Z` to release.
 - Docs are deployed per version tag and aliased to **latest**.
-- Sample commands:
+- `contract_version`, `CITATION.cff version`, and git tag **must always match**
+
+## Release Procedure (Required)
+
+Follow these steps exactly when creating a new release.
+
+### Task 1. Update release metadata (manual edits)
+
+1.1. lakefile.toml: update version
+1.2. CHANGELOG.md: add section, move unreleased entries, update links
+1.3. `SEFormalContract/Basic.lean` update
+  `currentContractVersion` to `{ major := X, minor := Y, patch := Z }`
+
+### Task 2. Regenerate exported contract artifacts
+
+2.1. Regenerate JSON contract artifacts from Lean.
+2.2. Sync `SE_MANIFEST.toml` and `CITATION.cff` from generated JSON.
+
+This reads `data/contract/invariant-registry.json`
+for the canonical version and updates:
+
+- `SE_MANIFEST.toml` `[contract].contract_version` and `[exports]` paths
+- `CITATION.cff` `version` and `date-released` (today's date)
 
 ```shell
-# as needed
-git tag -d v0.1.0
-git push origin :refs/tags/v0.1.0
-
-# new tag / release
-git tag v0.1.0 -m "0.1.0"
-git push origin v0.1.0
+lake exe export_contract
+uv run python -m se_formal_contract sync
 ```
 
-[Unreleased]: https://github.com/structural-explainability/se-formal-contract/compare/v0.1.0...HEAD
+### Task 3. Validate locally (pre-tag)
+
+```shell
+uv sync --extra dev --extra docs --upgrade
+git add -A
+uvx pre-commit run --all-files
+
+uv run python -m se_formal_contract validate
+
+npx markdownlint-cli "**/*.md" --fix
+uv run python -m ruff format .
+uv run python -m ruff check . --fix
+uv run python -m pyright
+uv run python -m pytest
+uv run python -m zensical build
+```
+
+### Task 4. After successful validate
+
+```shell
+git add .
+git commit -m "Release X.Y.Z"
+```
+
+### Task 5. Create tag
+
+```shell
+git tag vX.Y.Z -m "X.Y.Z"
+```
+
+### Task 6. After tagging, can check consistency with
+
+```shell
+uv run python -m se_formal_contract validate --require-tag
+```
+
+### Task 7. Push changes and tag
+
+```shell
+git push origin main
+git push origin vX.Y.Z
+```
+
+[Unreleased]: https://github.com/structural-explainability/se-formal-contract/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/structural-explainability/se-formal-contract/releases/tag/v0.2.0
 [0.1.0]: https://github.com/structural-explainability/se-formal-contract/releases/tag/v0.1.0

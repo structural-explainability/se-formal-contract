@@ -33,7 +33,7 @@ structure ContractVersion where
 deriving Repr, DecidableEq
 
 def currentContractVersion : ContractVersion :=
-  { major := 0, minor := 1, patch := 0 }
+  { major := 0, minor := 2, patch := 0 }
 
 inductive InvariantId where
   | formalContractIsRoot
@@ -46,6 +46,12 @@ inductive TheoremId where
   | ontologicalNeutrality
   | regimeNecessity
   | regimeSufficiency
+deriving Repr, DecidableEq
+
+inductive TheoremKind where
+  | theorem
+  | lemma
+  | axiom
 deriving Repr, DecidableEq
 
 end SEFormalContract

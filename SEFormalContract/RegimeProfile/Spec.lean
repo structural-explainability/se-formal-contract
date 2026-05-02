@@ -1,12 +1,12 @@
-import SEFormalContract.Regime.Core
+import SEFormalContract.RegimeProfile.Core
 
 /-!
-File: SEFormalContract.Regime.Spec
+File: SEFormalContract.RegimeProfile.Spec
 
 Owns:
 
-- stable regime requirement identifiers
-- regime requirement shapes
+- stable regime profile requirement identifiers
+- regime profile requirement shapes
 
 Does not own:
 
@@ -16,7 +16,7 @@ Does not own:
 - domain-specific examples
 -/
 
-namespace SEFormalContract.Regime.Spec
+namespace SEFormalContract.RegimeProfile.Spec
 
 def FC_REGIMES_NINE_PROFILES : String :=
   "FC.REGIMES.NINE_PROFILES"
@@ -30,6 +30,6 @@ def Req_FC_REGIMES_NINE_PROFILES : Prop :=
 
 /-- REQ: FC.REGIMES.ALL_ADMISSIBLE -/
 def Req_FC_REGIMES_ALL_ADMISSIBLE : Prop :=
-  ∀ r : SEFormalContract.Regime, r.isAdmissible
+  ∀ r : SEFormalContract.RegimeProfile, r.isAdmissible
 
-end SEFormalContract.Regime.Spec
+end SEFormalContract.RegimeProfile.Spec

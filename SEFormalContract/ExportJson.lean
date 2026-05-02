@@ -19,16 +19,16 @@ def invariantIdToString : InvariantId -> String
   | InvariantId.noReverseFoundationDependencies => "no_reverse_foundation_dependencies"
   | InvariantId.constitutionIsFoundational => "constitution_is_foundational"
 
-def regimeToString : Regime -> String
-  | Regime.OBL => "OBL"
-  | Regime.OCC => "OCC"
-  | Regime.REC => "REC"
-  | Regime.ENR_L => "ENR-L"
-  | Regime.ENR_I => "ENR-I"
-  | Regime.CTX_E => "CTX-E"
-  | Regime.CTX_S => "CTX-S"
-  | Regime.NOR_C => "NOR-C"
-  | Regime.NOR_S => "NOR-S"
+def regimeToString : RegimeProfile -> String
+  | RegimeProfile.OBL   => "OBL"
+  | RegimeProfile.OCC   => "OCC"
+  | RegimeProfile.REC   => "REC"
+  | RegimeProfile.ENR_L => "ENR-L"
+  | RegimeProfile.ENR_I => "ENR-I"
+  | RegimeProfile.CTX_E => "CTX-E"
+  | RegimeProfile.CTX_S => "CTX-S"
+  | RegimeProfile.NOR_C => "NOR-C"
+  | RegimeProfile.NOR_S => "NOR-S"
 
 def relationToString : Relation -> String
   | Relation.equivalent => "equivalent"
@@ -47,6 +47,15 @@ def theoremIdToString : TheoremId -> String
   | TheoremId.regimeNecessity => "regime_necessity"
   | TheoremId.regimeSufficiency => "regime_sufficiency"
 
+def theoremKindToString : TheoremKind -> String
+  | TheoremKind.theorem => "theorem"
+  | TheoremKind.lemma   => "lemma"
+  | TheoremKind.axiom   => "axiom"
+
+def versionString : String :=
+  let v := currentContractVersion
+  s!"{v.major}.{v.minor}.{v.patch}"
+
 def proofRecordToJson (p : ProofRecord) : String :=
   "    {\"id\": "
     ++ quoteJsonString (theoremIdToString p.theoremId)
@@ -54,10 +63,23 @@ def proofRecordToJson (p : ProofRecord) : String :=
     ++ quoteJsonString (proofStatusToString p.status)
     ++ "}"
 
+def theoremRecordToJson (t : TheoremRecord) : String :=
+  "    {\"id\": "
+    ++ quoteJsonString (theoremIdToString t.id)
+    ++ ", \"module\": "
+    ++ quoteJsonString t.moduleName
+    ++ ", \"declaration\": "
+    ++ quoteJsonString t.declarationName
+    ++ ", \"kind\": "
+    ++ quoteJsonString (theoremKindToString t.kind)
+    ++ ", \"depends_on\": "
+    ++ jsonArray (t.dependsOn.map theoremIdToString)
+    ++ "}"
+
 def invariantRegistryJson : String :=
   "{\n"
     ++ "  \"schema\": \"se-invariant-registry-1\",\n"
-    ++ "  \"contract_version\": \"0.1.0\",\n"
+    ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
     ++ "  \"invariants\": "
     ++ jsonArray (exportedInvariants.map invariantIdToString)
     ++ "\n}\n"
@@ -65,7 +87,7 @@ def invariantRegistryJson : String :=
 def regimeRegistryJson : String :=
   "{\n"
     ++ "  \"schema\": \"se-regime-registry-1\",\n"
-    ++ "  \"contract_version\": \"0.1.0\",\n"
+    ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
     ++ "  \"regimes\": "
     ++ jsonArray (exportedRegimes.map regimeToString)
     ++ "\n}\n"
@@ -73,7 +95,7 @@ def regimeRegistryJson : String :=
 def relationRegistryJson : String :=
   "{\n"
     ++ "  \"schema\": \"se-relation-registry-1\",\n"
-    ++ "  \"contract_version\": \"0.1.0\",\n"
+    ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
     ++ "  \"relations\": "
     ++ jsonArray (exportedRelations.map relationToString)
     ++ "\n}\n"
@@ -81,10 +103,19 @@ def relationRegistryJson : String :=
 def proofRegistryJson : String :=
   "{\n"
     ++ "  \"schema\": \"se-proof-registry-1\",\n"
-    ++ "  \"contract_version\": \"0.1.0\",\n"
+    ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
     ++ "  \"proofs\": [\n"
     ++ String.intercalate ",\n" (exportedProofs.map proofRecordToJson)
     ++ "\n  ]\n}\n"
+
+def theoremRegistryJson : String :=
+  "{\n"
+    ++ "  \"schema\": \"se-theorem-registry-1\",\n"
+    ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
+    ++ "  \"theorems\": [\n"
+    ++ String.intercalate ",\n" (exportedTheorems.map theoremRecordToJson)
+    ++ "\n  ]\n}\n"
+
 
 def writeContractJson : IO Unit := do
   IO.FS.createDirAll "data/contract"
@@ -96,6 +127,8 @@ def writeContractJson : IO Unit := do
   IO.println "[export] wrote data/contract/relation-registry.json"
   IO.FS.writeFile "data/contract/proof-registry.json" proofRegistryJson
   IO.println "[export] wrote data/contract/proof-registry.json"
+  IO.FS.writeFile "data/contract/theorem-registry.json" theoremRegistryJson
+  IO.println "[export] wrote data/contract/theorem-registry.json"
   IO.println "[export] completed"
 
 end SEFormalContract

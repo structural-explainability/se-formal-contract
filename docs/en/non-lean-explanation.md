@@ -45,32 +45,32 @@ The contract requires nine identity-and-persistence regime profiles:
 
 ### Unsplit profiles
 
-- **OBL** — obligation-bearing entity
-- **OCC** — time-indexed occurrence
-- **REC** — descriptive record
+- **OBL** - obligation-bearing entity
+- **OCC** - time-indexed occurrence
+- **REC** - descriptive record
 
 These do not require refinement under admissible transformations.
 
 ### ENR refinement (branching)
 
-- **ENR-L** — locus-bound referent
-- **ENR-I** — instrument-bound referent
+- **ENR-L** - locus-bound referent
+- **ENR-I** - instrument-bound referent
 
 Two representations can refer to the same locus even when artifacts differ,
 but cannot remain the same artifact once branching produces distinct objects.
 
 ### CTX refinement (decomposition)
 
-- **CTX-E** — extension-based context
-- **CTX-S** — structure-based context
+- **CTX-E** - extension-based context
+- **CTX-S** - structure-based context
 
 Two representations can apply to the same cases even when internally structured
 differently, but cannot be the same structure once decomposition changes that organization.
 
 ### NOR refinement (structural vs content)
 
-- **NOR-C** — content-sensitive normative structure
-- **NOR-S** — structure-sensitive normative structure
+- **NOR-C** - content-sensitive normative structure
+- **NOR-S** - structure-sensitive normative structure
 
 Two representations can encode the same normative content while differing in structure,
 but cannot remain the same structure once that organization changes.

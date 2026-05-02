@@ -4,35 +4,68 @@
 # ============================================================
 
 schema = "se-manifest-2"
+schema_url = "https://github.com/structural-explainability/se-constitution"
 
 # === Identity ===
 
 [meta]
-name = "se-formal-contract"
-org = "structural-explainability"
-status = "active"
-version = "0.1.0"
+purpose = "Declares the formal contract repository for the Structural Explainability ecosystem."
 
 [repo]
+name = "se-formal-contract"
+org = "structural-explainability"
 class = "formal_contract"
-summary = "Lean 4–verified formal contract exporting invariants, regimes, relations, and proof status to operational SE repositories."
+kind = "foundation"
+status = "active"
+since = "2026"
+summary = "Lean 4-verified formal contract exporting invariants, regimes, relations, and proof status to operational SE repositories."
 
-# === Structural contract ===
+[layer]
+space = "formal"
+role = "formal-contract"
+
+# === Dependencies ===
 
 [depends]
-# formal contract is the root
+# Required upstream repository dependencies.
+required = [
+  "se-theory-neutral-substrate",
+  "se-theory-identity-regimes",
+  "se-theory-structural-explainability",
+]
+# Optional upstream repository dependencies.
 optional = []
-required = []
+
+# === Formal Contract Declaration ===
+
+[contract]
+contract_version = "0.2.0"
+exports_verified_contract = true
+
+# === Exported Contract Artifacts ===
+
+[exports]
+invariants = "data/contract/invariant-registry.json"
+regimes    = "data/contract/regime-registry.json"
+relations  = "data/contract/relation-registry.json"
+proofs     = "data/contract/proof-registry.json"
+theorems   = "data/contract/theorem-registry.json"
+
+# === Provided artifacts ===
 
 [provides]
-# explicit contract artifacts exported to operational layer
+# Logical artifacts exposed to downstream repositories.
+# These are stable identifiers, not file paths.
 artifacts = [
   "contract-manifest",
   "invariant-registry",
   "regime-registry",
   "relation-registry",
   "proof-registry",
+  "theorem-registry",
 ]
+
+# === Scope ===
 
 [scope]
 includes = [
@@ -53,22 +86,13 @@ excludes = [
   "runtime systems",
 ]
 
-[validation]
-# this repo validates proofs and export integrity, not operational data
-entrypoint = "se_formal_contract.app:run_validate"
-
-# === Behavior / governance ===
-
-[naming]
-pattern = "se-*"
-
-[governance]
-authority = "structural-explainability"
-
-# === External references ===
+# === Citation ===
 
 [citation]
 cff = "CITATION.cff"
+preferred = "CITATION.cff"
+
+# === Traceability ===
 
 [traceability]
 identifier_map = "none"

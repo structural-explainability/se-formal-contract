@@ -7,6 +7,18 @@ from typing import Any
 CONTRACT_DIR = Path("data/contract")
 
 
+def get_contract_version() -> str:
+    """Read contract_version from SE_MANIFEST.toml."""
+    import tomllib
+
+    data = tomllib.loads(Path("SE_MANIFEST.toml").read_text(encoding="utf-8"))
+    contract = data.get("contract")
+    assert isinstance(contract, dict)
+    version = contract.get("contract_version")
+    assert isinstance(version, str)
+    return version
+
+
 def load_json(name: str) -> dict[str, Any]:
     """Load one generated contract artifact."""
     path = CONTRACT_DIR / name
@@ -46,7 +58,7 @@ def test_invariant_registry_structure() -> None:
     data = load_json("invariant-registry.json")
 
     assert data["schema"] == "se-invariant-registry-1"
-    assert data["contract_version"] == "0.1.0"
+    assert data["contract_version"] == get_contract_version()
     assert isinstance(data["invariants"], list)
     invariants = get_str_list(data, "invariants")
     assert_unique(invariants, "invariants")
@@ -57,7 +69,7 @@ def test_regime_registry_structure() -> None:
     data = load_json("regime-registry.json")
 
     assert data["schema"] == "se-regime-registry-1"
-    assert data["contract_version"] == "0.1.0"
+    assert data["contract_version"] == get_contract_version()
     assert isinstance(data["regimes"], list)
     assert_unique(data["regimes"], "regimes")
 
@@ -67,7 +79,7 @@ def test_relation_registry_structure() -> None:
     data = load_json("relation-registry.json")
 
     assert data["schema"] == "se-relation-registry-1"
-    assert data["contract_version"] == "0.1.0"
+    assert data["contract_version"] == get_contract_version()
     assert isinstance(data["relations"], list)
     assert_unique(data["relations"], "relations")
 
@@ -77,7 +89,7 @@ def test_proof_registry_structure() -> None:
     data = load_json("proof-registry.json")
 
     assert data["schema"] == "se-proof-registry-1"
-    assert data["contract_version"] == "0.1.0"
+    assert data["contract_version"] == get_contract_version()
     assert isinstance(data["proofs"], list)
 
     proofs = get_proofs(data)

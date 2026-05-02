@@ -85,8 +85,8 @@ uvx pre-commit run --all-files
 git add -A
 uvx pre-commit run --all-files
 
-# Run formal contract validation against
-# exported artifacts (fail if contract is inconsistent)
+# Run formal contract validation
+# after: lake exe export_contract
 uv run python -m se_formal_contract validate
 
 # do chores

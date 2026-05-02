@@ -1,8 +1,8 @@
 # ============================================================
-# .pre-commit-config.yaml (Spec Hygiene)
+# .pre-commit-config.yaml (SE Formal Contract)
 # ============================================================
-# VARIANT: spec-hygiene
-# ROLE: constitutional / specification repository
+# VARIANT: se-formal-contract
+# Updated: 2026-05-02
 
 # Fast, consistent repository hygiene before commit.
 #
@@ -103,6 +103,25 @@ repos:
       - id: ruff-format
         name: D2) Ruff formatter (runs after linter fixes)
         # WHY: Formats whatever structure the linter left behind.
+
+
+  # === EXECUTE REPO SPECIFIC LOGIC ===
+
+  - repo: local
+    hooks:
+      - id: se-formal-contract-validate
+        name: E1) SE formal contract validation
+        entry: uv run python -m se_formal_contract validate
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: markdownlint
+        name: E2) Markdown lint
+        language: system
+        entry: npx markdownlint-cli "**/*.md" --fix
+        pass_filenames: false
+        always_run: true
 
 # === GLOBAL SETTINGS ===
 # ALT: Set fail_fast to true to stop at first failure.

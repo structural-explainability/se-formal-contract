@@ -1,6 +1,6 @@
-import SEFormalContract.Regime.Core
-import SEFormalContract.Regime.Spec
-import SEFormalContract.Regime.Conformance
+import SEFormalContract.RegimeProfile.Core
+import SEFormalContract.RegimeProfile.Spec
+import SEFormalContract.RegimeProfile.Conformance
 
 /-!
 REQ.PUBLIC.SURFACE:
