@@ -1,0 +1,20 @@
+{
+  "se-theory-neutral-substrate": {
+    "ref": "main",
+    "commit": "760c78dcd2ce860a9564e7091195031394adbf7b",
+    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synced_at": "2026-05-02T23:43:22Z"
+  },
+  "se-theory-identity-regimes": {
+    "ref": "main",
+    "commit": "8937211634c703e04a56b749e5566b5aefbf782a",
+    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synced_at": "2026-05-02T23:43:22Z"
+  },
+  "se-theory-structural-explainability": {
+    "ref": "main",
+    "commit": "020bd10edcbf7b4b78d93a933d49ec8e3bd70006",
+    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "synced_at": "2026-05-02T23:43:22Z"
+  }
+}
