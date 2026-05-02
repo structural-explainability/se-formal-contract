@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # sync_upstream.sh
-# Sparse-clones the requirements/ folder
+# Sparse-clones the reference/ folder
 # from each upstream theory repo
 # into reference/upstream/.
 # Writes per-repo commit SHAs to a temp file
@@ -16,9 +16,9 @@ UPSTREAM_DIR="reference/upstream"
 COMMIT_TEMP=".github/scripts/_sync_commits.txt"
 
 declare -A REPOS=(
-  ["se-theory-neutral-substrate"]="requirements"
-  ["se-theory-identity-regimes"]="requirements"
-  ["se-theory-structural-explainability"]="requirements"
+  ["se-theory-neutral-substrate"]="reference"
+  ["se-theory-identity-regimes"]="reference"
+  ["se-theory-structural-explainability"]="reference"
 )
 
 mkdir -p "$UPSTREAM_DIR"
