@@ -111,7 +111,7 @@ repos:
     hooks:
       - id: se-formal-contract-validate
         name: E1) SE formal contract validation
-        entry: uv run python -m se_formal_contract validate
+        entry: uv run se-formal-contract validate
         language: system
         pass_filenames: false
         always_run: true

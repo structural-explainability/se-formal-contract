@@ -51,7 +51,7 @@ def validate_citation_version(manifest: dict[str, Any]) -> None:
 def validate_contract_version(manifest: dict[str, Any]) -> None:
     """Ensure contract_version matches git tag."""
     contract = manifest.get("contract")
-    if not contract:
+    if contract is None:
         raise ValueError("Missing [contract] section in manifest")
 
     version = contract.get("contract_version")

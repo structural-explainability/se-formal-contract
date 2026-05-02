@@ -11,9 +11,11 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ---
 
-## [0.2.0] - 2026-04-30
+## [0.2.0] - 2026-05-02
 
 ### Added
+
+.github workflow to fetch theory repo reference contents.
 
 Formal contract manifest and export alignment:
 
@@ -133,7 +135,7 @@ for the canonical version and updates:
 
 ```shell
 lake exe export_contract
-uv run python -m se_formal_contract sync
+uv run se-formal-contract sync
 ```
 
 ### Task 3. Validate locally (pre-tag)
@@ -142,42 +144,34 @@ uv run python -m se_formal_contract sync
 uv sync --extra dev --extra docs --upgrade
 git add -A
 uvx pre-commit run --all-files
-
-uv run python -m se_formal_contract validate
-
-npx markdownlint-cli "**/*.md" --fix
-uv run python -m ruff format .
-uv run python -m ruff check . --fix
+uv run se-formal-contract validate
 uv run python -m pyright
 uv run python -m pytest
 uv run python -m zensical build
 ```
 
-### Task 4. After successful validate
+### Task 4. Commit, tag, push
 
 ```shell
-git add .
-git commit -m "Release X.Y.Z"
+git add -A
+git commit -m "Prep X.Y.Z"
+git push -u origin main
 ```
 
-### Task 5. Create tag
+Verify actions run on GitHub. After success:
 
 ```shell
 git tag vX.Y.Z -m "X.Y.Z"
-```
-
-### Task 6. After tagging, can check consistency with
-
-```shell
-uv run python -m se_formal_contract validate --require-tag
-```
-
-### Task 7. Push changes and tag
-
-```shell
-git push origin main
 git push origin vX.Y.Z
 ```
+
+### Task 5. After tagging, verify tag consistency
+
+```shell
+uv run se-formal-contract validate --require-tag
+```
+
+## Links
 
 [Unreleased]: https://github.com/structural-explainability/se-formal-contract/compare/v0.2.0...HEAD
 [0.2.0]: https://github.com/structural-explainability/se-formal-contract/releases/tag/v0.2.0

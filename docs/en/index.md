@@ -86,7 +86,7 @@ lake exe export_contract
 Validate exported artifacts:
 
 ```shell
-uv run python -m se_formal_contract validate
+uv run se-formal-contract validate
 ```
 
 ## Contract boundary

@@ -59,7 +59,7 @@ lake exe export_contract
 ### Validate contract artifacts
 
 ```shell
-uv run python -m se_formal_contract validate
+uv run se-formal-contract validate
 ```
 
 ### Lint / format

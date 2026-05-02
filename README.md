@@ -85,14 +85,10 @@ uvx pre-commit run --all-files
 git add -A
 uvx pre-commit run --all-files
 
-# Run formal contract validation
-# after: lake exe export_contract
-uv run python -m se_formal_contract validate
+# After running: lake exe export_contract, run:
+uv run se-formal-contract validate
 
 # do chores
-npx markdownlint-cli "**/*.md" --fix
-uv run python -m ruff format .
-uv run python -m ruff check . --fix
 uv run python -m pyright
 uv run python -m pytest
 uv run python -m zensical build
