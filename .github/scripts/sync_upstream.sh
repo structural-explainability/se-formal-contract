@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # sync_upstream.sh
 # Sparse-clones the reference/ folder
-# from each upstream theory repo
-# into reference/upstream/.
+# from each upstream theory repo into upstream/.
 # Writes per-repo commit SHAs to a temp file
 # for the lockfile updater to consume.
 #
@@ -12,7 +11,7 @@
 set -euo pipefail
 
 ORG="structural-explainability"
-UPSTREAM_DIR="reference/upstream"
+UPSTREAM_DIR="upstream"
 COMMIT_TEMP=".github/scripts/_sync_commits.txt"
 
 declare -A REPOS=(
@@ -26,7 +25,7 @@ rm -f "$COMMIT_TEMP"
 
 for REPO in "${!REPOS[@]}"; do
   FOLDER="${REPOS[$REPO]}"
-  TARGET="$UPSTREAM_DIR/$REPO"
+  TARGET="$UPSTREAM_DIR/$REPO/main"
   TMP_DIR=$(mktemp -d)
 
   echo "==> Syncing $REPO/$FOLDER"
@@ -53,7 +52,7 @@ for REPO in "${!REPOS[@]}"; do
     cp -r "$TMP_DIR/$FOLDER/." "$TARGET/"
     echo "    Synced $FOLDER/ -> $TARGET/"
   else
-    echo "    WARNING: $FOLDER/ not found in $REPO — target left empty"
+    echo "    WARNING: $FOLDER/ not found in $REPO. Target left empty"
   fi
 
   rm -rf "$TMP_DIR"
