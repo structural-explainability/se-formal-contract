@@ -2,19 +2,19 @@
   "se-theory-neutral-substrate": {
     "ref": "main",
     "commit": "760c78dcd2ce860a9564e7091195031394adbf7b",
-    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "synced_at": "2026-05-02T23:43:22Z"
+    "folder_hash": "sha256:8c990db502cee3daef6630418653c556341245dfb8b10d876613542115da2866",
+    "synced_at": "2026-05-02T23:48:02Z"
   },
   "se-theory-identity-regimes": {
     "ref": "main",
     "commit": "8937211634c703e04a56b749e5566b5aefbf782a",
-    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "synced_at": "2026-05-02T23:43:22Z"
+    "folder_hash": "sha256:547d45868281f88d009f8ca8bfffa5cf312fa91f208fb416f8617e8475525f2c",
+    "synced_at": "2026-05-02T23:48:02Z"
   },
   "se-theory-structural-explainability": {
     "ref": "main",
     "commit": "020bd10edcbf7b4b78d93a933d49ec8e3bd70006",
-    "folder_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "synced_at": "2026-05-02T23:43:22Z"
+    "folder_hash": "sha256:ae175a34e480b80a20c20151c2bcf48c293bc061b6dea194a32c067c2bfce86b",
+    "synced_at": "2026-05-02T23:48:02Z"
   }
 }
