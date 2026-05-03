@@ -1,14 +1,13 @@
-import SEFormalContract.Basic
+import SEFormalContract.Vocab.Basic
 
 /-!
 File: SEFormalContract.Neutrality.Core
 
 Owns:
-
-- substrate structure
-- neutrality predicate
-- pre-causal and pre-normative constraints
-- theorem statements/proofs
+  - substrate structure
+  - neutrality predicate
+  - pre-causal and pre-normative constraints
+  - theorem statements/proofs
 
 Does not own:
 

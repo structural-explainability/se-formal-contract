@@ -1,7 +1,7 @@
-import SEFormalContract.Basic
+import SEFormalContract.Vocab.Basic
 
 /-!
-File: SEFormalContract.Requirement.Core
+File: SEFormalContract.Requirements
 
 Owns:
 

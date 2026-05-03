@@ -1,7 +1,7 @@
-import SEFormalContract.Basic
+import SEFormalContract.Vocab.Basic
 
 /-
-TheoremRegistry.lean
+Theorems.lean
 
 Curated theorem registry for the SE formal contract export.
 
@@ -20,7 +20,7 @@ deriving Repr, BEq
 
 
 /-- Stable reference to a theorem exposed through the formal contract. -/
-structure TheoremRegistryEntry where
+structure TheoremsEntry where
   id : String
   moduleName : String
   declarationName : String
@@ -30,7 +30,7 @@ structure TheoremRegistryEntry where
 deriving Repr, BEq
 
 /-- Curated theorem references exported by the formal contract. -/
-def theoremRegistry : List TheoremRegistryEntry := [
+def theorems : List TheoremsEntry := [
   {
     id := "neutrality_constraints"
     moduleName := "SEFormalContract.Neutrality"

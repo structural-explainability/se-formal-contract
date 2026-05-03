@@ -1,11 +1,4 @@
-import SEFormalContract.Basic
-import SEFormalContract.Export
-import SEFormalContract.ExportJson
-import SEFormalContract.Neutrality
-import SEFormalContract.RegimeProfile
-import SEFormalContract.Relation
-import SEFormalContract.Requirement
-import SEFormalContract.TheoremRegistry
+import SEFormalContract.Surface
 
 /-!
 File: SEFormalContract

@@ -47,6 +47,9 @@ SEFormalContract/
 
 ## Build and Run
 
+Use VS Code Menu:
+View / Command Palette / `Developer: Reload Window` to refresh.
+
 ```shell
 elan self update
 lake update

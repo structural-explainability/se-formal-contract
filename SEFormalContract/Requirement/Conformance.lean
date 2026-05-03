@@ -1,4 +1,4 @@
-import SEFormalContract.Requirement.Core
+import SEFormalContract.Vocab.Requirements
 import SEFormalContract.Requirement.Spec
 
 /-!

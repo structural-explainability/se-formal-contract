@@ -1,5 +1,5 @@
 /-!
-File: SEFormalContract.Basic
+File: SEFormalContract.Vocab.Basic
 
 Owns:
 

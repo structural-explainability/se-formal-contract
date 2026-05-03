@@ -108,7 +108,7 @@ def proofRegistryJson : String :=
     ++ String.intercalate ",\n" (exportedProofs.map proofRecordToJson)
     ++ "\n  ]\n}\n"
 
-def theoremRegistryJson : String :=
+def theoremsJson : String :=
   "{\n"
     ++ "  \"schema\": \"se-theorem-registry-1\",\n"
     ++ "  \"contract_version\": \"" ++ versionString ++ "\",\n"
@@ -127,7 +127,7 @@ def writeContractJson : IO Unit := do
   IO.println "[export] wrote data/contract/relation-registry.json"
   IO.FS.writeFile "data/contract/proof-registry.json" proofRegistryJson
   IO.println "[export] wrote data/contract/proof-registry.json"
-  IO.FS.writeFile "data/contract/theorem-registry.json" theoremRegistryJson
+  IO.FS.writeFile "data/contract/theorem-registry.json" theoremsJson
   IO.println "[export] wrote data/contract/theorem-registry.json"
   IO.println "[export] completed"
 

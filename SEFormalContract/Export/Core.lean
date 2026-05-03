@@ -1,4 +1,4 @@
-import SEFormalContract.Basic
+import SEFormalContract.Vocab.Basic
 
 /-!
 File: SEFormalContract.Export.Core
