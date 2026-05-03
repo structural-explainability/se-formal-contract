@@ -9,8 +9,6 @@ from typing import Any, cast
 
 import yaml
 
-from se_formal_contract.sync import sync_all
-
 from .load import get_git_tag, load, load_manifest, require_keys
 
 
@@ -112,7 +110,6 @@ def run_validate(*, require_tag: bool = False) -> None:
         *: All args after this are keyword-only.
         require_tag: If True, enforce that contract_version matches git tag.
     """
-    sync_all()  # always sync before reading manifest
     manifest = load_manifest()
 
     if require_tag:
