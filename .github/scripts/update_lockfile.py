@@ -4,7 +4,7 @@ Reads commit SHAs written by sync_upstream.sh, computes a deterministic
 SHA-256 hash of each synced folder, and writes/updates
 reference/upstream.lock.
 
-Usage: python .github/scripts/update_lockfile.py
+Usage: uv run python .github/scripts/update_lockfile.py
 Runs from repo root.
 """
 

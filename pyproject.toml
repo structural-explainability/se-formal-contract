@@ -18,6 +18,7 @@ dynamic = ["version"] # WHY: Version is computed from git tags at build time (se
 
 dependencies = [
     "tomlkit",  # WHY: Required to sync and validate SE_MANIFEST.toml contract_version alignment.
+    "se-manifest-schema", # WHY: Required for parsing and validating SE_MANIFEST.toml at runtime.
 ]
 
 [project.optional-dependencies]

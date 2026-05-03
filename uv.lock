@@ -283,6 +283,7 @@ wheels = [
 name = "se-formal-contract"
 source = { editable = "." }
 dependencies = [
+    { name = "se-manifest-schema" },
     { name = "tomlkit" },
 ]
 
@@ -309,10 +310,23 @@ requires-dist = [
     { name = "pytest-cov", marker = "extra == 'dev'" },
     { name = "pyyaml", marker = "extra == 'dev'" },
     { name = "ruff", marker = "extra == 'dev'" },
+    { name = "se-manifest-schema" },
     { name = "tomlkit" },
     { name = "zensical", marker = "extra == 'docs'", specifier = "==0.0.37" },
 ]
 provides-extras = ["dev", "docs"]
+
+[[package]]
+name = "se-manifest-schema"
+version = "0.2.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pyyaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a5/87/f7d0677606225bcbe51e2617fe0562615e1f4c0b5e85d2fcd7f3c60a8cc5/se_manifest_schema-0.2.3.tar.gz", hash = "sha256:6bfd3beab684849ff4ff63eec14e8861c491b2820eae66661b950e43a2a1d807", size = 55213, upload-time = "2026-05-02T00:05:32.396Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/33/3534429522e8aaa91c5861f5b8fcabcff1c1519cd74b1e70179830cdcd1d/se_manifest_schema-0.2.3-py3-none-any.whl", hash = "sha256:e1965dc95843962e1bd1d173f7d6fe13e9e6ff3d6bd5df74101c899f7206a254", size = 16749, upload-time = "2026-05-02T00:05:30.914Z" },
+]
 
 [[package]]
 name = "tomli"

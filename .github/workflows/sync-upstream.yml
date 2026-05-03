@@ -1,7 +1,8 @@
+
 # ============================================================
 # .github/workflows/sync-upstream.yml (Sync Upstream Theory)
 # ============================================================
-# Updated: 2026-05-02 REPO SPECIFIC Execution
+# Updated: 2026-05-02 se-formal-contract REPO SPECIFIC Execution
 
 name: Sync Upstream Theory
 
@@ -14,7 +15,6 @@ env:
   PYTHONUNBUFFERED: "1"    # WHY: Real-time log output in CI.
   PYTHONIOENCODING: "utf-8" # WHY: Consistent encoding across platforms.
   PYTHON_VERSION: "3.15"
-  UV_PYTHON: "3.15"
 
 jobs:
   sync:
@@ -54,7 +54,7 @@ jobs:
         run: bash .github/scripts/sync_upstream.sh
 
       - name: B2) Compute folder hashes and update lockfile (.py)
-        run: python .github/scripts/update_lockfile.py
+        run: uv run python .github/scripts/update_lockfile.py
 
       - name: B3) Commit if changed
         run: |
