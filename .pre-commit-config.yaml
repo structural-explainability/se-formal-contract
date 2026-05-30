@@ -109,17 +109,17 @@ repos:
 
   - repo: local
     hooks:
-      - id: se-formal-contract-validate
-        name: E1) SE formal contract validation
-        entry: uv run se-formal-contract validate
+      - id: markdownlint
+        name: E1) Markdown lint
         language: system
+        entry: npx markdownlint-cli2 --fix
         pass_filenames: false
         always_run: true
 
-      - id: markdownlint
-        name: E2) Markdown lint
+      - id: se-validate-manifest
+        name: E2) Validate manifest against schema
         language: system
-        entry: npx markdownlint-cli "**/*.md" --fix
+        entry: uv run se-manifest validate-manifest --strict
         pass_filenames: false
         always_run: true
 
