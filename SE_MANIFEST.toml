@@ -1,15 +1,18 @@
 # ============================================================
 # SE_MANIFEST.toml (Repository Declaration)
-# se-formal-contract
 # ============================================================
 
-schema = "se-manifest-2"
-schema_url = "https://github.com/structural-explainability/se-constitution"
+schema = "se-manifest-schema"
+schema_url = "https://raw.githubusercontent.com/structural-explainability/se-manifest-schema/main/manifest-schema.toml"
 
-# === Identity ===
+# === Framework Context ===
 
 [meta]
-purpose = "Declares the formal contract repository for the Structural Explainability ecosystem."
+framework = "Structural Explainability"
+framework_url = "https://github.com/structural-explainability"
+purpose = "Declares this repository's role in the Structural Explainability ecosystem."
+
+# === Repository Identity ===
 
 [repo]
 name = "se-formal-contract"
@@ -20,11 +23,13 @@ status = "active"
 since = "2026"
 summary = "Lean 4-verified formal contract exporting invariants, regimes, relations, and proof status to operational SE repositories."
 
+# === Layer Position ===
+
 [layer]
 space = "formal"
 role = "formal-contract"
 
-# === Dependencies ===
+# === Dependency Declarations ===
 
 [depends]
 # Required upstream repository dependencies.
@@ -51,7 +56,7 @@ relations  = "data/contract/relation-registry.json"
 proofs     = "data/contract/proof-registry.json"
 theorems   = "data/contract/theorem-registry.json"
 
-# === Provided artifacts ===
+# === Provided Artifacts ===
 
 [provides]
 # Logical artifacts exposed to downstream repositories.
