@@ -1,4 +1,19 @@
-# SE Formal Contract
+# ARCHIVED: Retired Research Repository
+
+> **Status:** Retired October 2026. No longer maintained.
+>
+> This repository belongs to an earlier stage of the Structural Explainability
+> research program.
+>
+> It is preserved unchanged for historical reference.
+> No further development is planned.
+>
+> For current research, see
+> [Structural Explainability](https://github.com/structural-explainability).
+
+---
+
+## SE Formal Contract
 
 [![Docs Site](https://img.shields.io/badge/docs-site-blue?logo=github)](https://structural-explainability.github.io/se-formal-contract/)
 [![Repo](https://img.shields.io/badge/repo-GitHub-black?logo=github)](https://github.com/structural-explainability/se-formal-contract)
@@ -78,6 +93,7 @@ code .
 ```shell
 uv self update
 uv python pin 3.15
+uv lock --upgrade
 uv sync --extra dev --extra docs --upgrade
 
 uvx pre-commit install

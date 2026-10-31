@@ -1,13 +1,11 @@
 # ============================================================
 # lakefile.toml
 # ============================================================
-
-# REQ.FILE.PROJECT.IDENTITY
-#   Declares the externally visible identity and build surface of this package.
-#   Sections marked CUSTOM are expected to vary by repository.
+# Declares the public Lean package identity, import surface,
+# build targets, dependencies, and export executable.
 
 # ============================================================
-# REQUIRED PROJECT IDENTITY
+# PROJECT IDENTITY
 # ============================================================
 
 name = "SEFormalContract"
@@ -22,32 +20,39 @@ keywords = [
   "invariants",
   "formal-specification",
   "formal-verification",
-  "proof-carrying",
   "theorem-proving",
   "lean4",
 ]
 
-# === BUILD CONFIGURATION
+# ============================================================
+# BUILD SURFACE
+# ============================================================
+# defaultTargets must include the public Lean library root.
 
 defaultTargets = ["SEFormalContract"]
 
-# === EXPORT LIBRARY (public, exported)
-# Lake discovers all modules under SEFormalContract/ automatically.
-# Dependency order: Vocab → Neutrality / RegimeProfile / Relation → Theorems → Export → Surface
-
-
-# === EXPORT LIBRARY (public, exported)
+# ============================================================
+# PUBLIC LIBRARY
+# ============================================================
+# Downstream Lean projects import this library root.
+# Lake discovers modules under the matching source directory.
 
 [[lean_lib]]
 name = "SEFormalContract"
 
-# === Executables
+# ============================================================
+# EXECUTABLES
+# ============================================================
+# Export executables generate machine-readable contract artifacts.
 
 [[lean_exe]]
 name = "export_contract"
 root = "Main"
 
-# === TEST LIBRARIES (internal, not exported)
+# ============================================================
+# TEST LIBRARIES
+# ============================================================
+# Test libraries are internal and are not part of the public import surface.
 
 [[lean_lib]]
 name = "TestImport"
